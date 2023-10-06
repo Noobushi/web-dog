@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="from-group-header">Enter your details:</div>
+        <form [formGroup]="userFormGroup" (ngSubmit)="onSubmit(userFormGroup.value)">
+            <div class="col">
+                <div class="form-control">
+                    <mat-form-field class="form-field">
+                        <mat-label>Username</mat-label>
+                        <input matInput formControlName="username" [(ngModel)]="usernameValue">
+                        <button class="x-button" *ngIf="usernameValue" matSuffix (click)="usernameValue=''">
+                            <mat-icon class="x-icon" fontIcon="close"></mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <div class="form-control">
+                    <mat-form-field class="form-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" [(ngModel)]="passwordValue">
+                        <button class="x-button" *ngIf="passwordValue" matSuffix (click)="passwordValue=''">
+                            <mat-icon class="x-icon" fontIcon="close"></mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <div class="form-control">
+                    <mat-form-field class="form-field">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName" [(ngModel)]="firstNameValue">
+                        <button class="x-button" *ngIf="firstNameValue" matSuffix (click)="firstNameValue=''">
+                            <mat-icon class="x-icon" fontIcon="close"></mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <div class="form-control">
+                    <mat-form-field class="form-field">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName" [(ngModel)]="lastNameValue">
+                        <button class="x-button" *ngIf="lastNameValue" matSuffix (click)="lastNameValue=''">
+                            <mat-icon class="x-icon" fontIcon="close"></mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <div class="form-control">
+                    <mat-form-field class="form-field">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5" formControlName="description" [(ngModel)]="descriptionValue"> </textarea>
+                        <button class="x-button" *ngIf="descriptionValue" matSuffix (click)="descriptionValue=''">
+                            <mat-icon class="x-icon" fontIcon="close"></mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </div>
+            <button [disabled]="userFormGroup.invalid" class="submit-button" mat-raised-button color="primary" type="submit">Confirm</button>
+            <div class="validation-message" *ngIf="userFormGroup.invalid">Please fill all fields</div>
+        </form>
+    </div>
+</div>

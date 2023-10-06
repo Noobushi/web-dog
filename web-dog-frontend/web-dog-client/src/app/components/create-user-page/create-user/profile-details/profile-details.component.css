@@ -1,0 +1,36 @@
+.form-control {
+    background: transparent;
+    border: none;
+    padding: 0px;
+    padding-top: 10px;
+}
+
+.submit-button {
+    font-size: 15px;
+}
+
+.from-group-header {
+    color: rgb(15, 109, 204);
+    padding: 10px;
+    font-size: 35px;
+}
+
+.validation-message {
+    font-weight: bold;
+    color: red;
+    padding-top: 5px;
+    font-size: 15px;
+}
+
+.form-field {
+    width: 210px;
+}
+
+.x-button {
+    border: none;
+    background-color: transparent;
+}
+
+.x-icon {
+    color: red;
+}
