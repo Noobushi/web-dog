@@ -14,6 +14,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ProfileDetailsComponent } from './components/create-user-page/create-user/profile-details/profile-details.component';
 import { AvatarCreationComponent } from './components/create-user-page/create-user/avatar-creation/avatar-creation.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { AvatarCreationComponent } from './components/create-user-page/create-us
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    MatStepperModule,
+    MatSnackBarModule
   ],
   providers: [
     UserService
