@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(value = "http://localhost:4200")
 @RequestMapping("/users")
 public class UserController {
 
@@ -21,5 +21,10 @@ public class UserController {
     @PostMapping("/create")
     public ResponseEntity<UserResponse>createUser(@RequestBody UserRequest user){
         return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/create")
+    public ResponseEntity<UserResponse> editUser(@RequestParam int userId, @RequestBody UserRequest user){
+        return new ResponseEntity<> (userService.editUser(userId,user), HttpStatus.OK);
     }
 }
