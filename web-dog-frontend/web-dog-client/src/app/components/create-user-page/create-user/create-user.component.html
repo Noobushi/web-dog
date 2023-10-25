@@ -1,11 +1,13 @@
 <div class="container-fluid page-container">
     <mat-tab-group class="tab-headers" dynamicHeight mat-stretch-tabs="false" mat-align-tabs="center" [selectedIndex]="selectedIndex" (selectedTabChange)="onTabChange($event)">
-        <mat-tab label="Profile Details">
+        <mat-tab label="Profile Details" [disabled]="selectedIndex !== 0">
             <app-profile-details (tabSelected)="selectTab($event)"></app-profile-details>
         </mat-tab>
-        <mat-tab label="Avatar">
-            <app-avatar-creation></app-avatar-creation>
+        <mat-tab label="Avatar" [disabled]="selectedIndex !== 1">
+            <app-avatar-creation (tabSelected)="selectTab($event)"></app-avatar-creation>
         </mat-tab>
-        <mat-tab label="Third">Content 3</mat-tab>
+        <mat-tab label="Pet" [disabled]="selectedIndex !== 2">
+            <app-pet-details (tabSelected)="selectTab($event)"></app-pet-details>
+        </mat-tab>
     </mat-tab-group>
 </div>

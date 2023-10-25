@@ -16,6 +16,7 @@ import { ProfileDetailsComponent } from './components/create-user-page/create-us
 import { AvatarCreationComponent } from './components/create-user-page/create-user/avatar-creation/avatar-creation.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PetDetailsComponent } from './components/create-user-page/create-user/pet-details/pet-details.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HomePageComponent,
     CreateUserComponent,
     ProfileDetailsComponent,
-    AvatarCreationComponent
+    AvatarCreationComponent,
+    PetDetailsComponent
   ],
   imports: [
     BrowserModule,

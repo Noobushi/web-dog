@@ -53,7 +53,7 @@
         </form>
         <div>
             <div class="validation-message" *ngIf="userFormGroup.invalid">Please fill all fields</div>
+            <button mat-raised-button color="primary" (click)="updateInfo(userFormGroup)">Update</button>
         </div>
-        <button (click)="updateInfo(userFormGroup)">Update</button>
     </div>
 </div>

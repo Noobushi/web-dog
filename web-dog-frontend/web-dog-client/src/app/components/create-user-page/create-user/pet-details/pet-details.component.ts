@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-avatar-creation',
-  templateUrl: './avatar-creation.component.html',
-  styleUrls: ['./avatar-creation.component.css']
+  selector: 'app-pet-details',
+  templateUrl: './pet-details.component.html',
+  styleUrls: ['./pet-details.component.css']
 })
-export class AvatarCreationComponent {
+export class PetDetailsComponent {
 
   @Output() tabSelected = new EventEmitter<number>();
 
