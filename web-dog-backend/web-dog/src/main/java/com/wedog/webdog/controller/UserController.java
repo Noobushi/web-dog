@@ -19,12 +19,19 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<UserResponse>createUser(@RequestBody UserRequest user){
-        return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
+    public ResponseEntity<UserResponse>createUser(){
+        return new ResponseEntity<>(userService.createUser(), HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/update/{userId}")
+    public ResponseEntity<UserResponse> editUser(@PathVariable int userId, @RequestBody UserRequest user){
+        return new ResponseEntity<UserResponse> (userService.editUser(userId,user), HttpStatus.OK);
     }
 
     @PatchMapping("/create")
-    public ResponseEntity<UserResponse> editUser(@RequestParam int userId, @RequestBody UserRequest user){
-        return new ResponseEntity<> (userService.editUser(userId,user), HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Void> nullifyUser (@RequestParam int userId){
+        userService.nullifyUser(userId);
+        return ResponseEntity.noContent().build();
     }
 }

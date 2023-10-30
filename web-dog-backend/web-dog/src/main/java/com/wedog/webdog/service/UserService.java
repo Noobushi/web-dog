@@ -17,14 +17,14 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponse createUser (UserRequest user){
+    public UserResponse createUser (){
         User newUser = new User();
-        newUser.setUsername(user.getUsername());
-        newUser.setPassword(user.getPassword());
-        newUser.setFirstName(user.getFirstName());
-        newUser.setLastName(user.getLastName());
-        newUser.setDescription(user.getDescription());
-        newUser.setAvatar(user.getAvatar());
+        newUser.setUsername("");
+        newUser.setPassword("");
+        newUser.setFirstName("");
+        newUser.setLastName("");
+        newUser.setDescription("");
+        newUser.setAvatar("");
         userRepository.save(newUser);
         UserResponse responseUser = new UserResponse();
         responseUser.setId(newUser.getId());
@@ -41,10 +41,21 @@ public class UserService {
         reworkUser.setFirstName(user.getFirstName());
         reworkUser.setLastName(user.getLastName());
         reworkUser.setDescription(user.getDescription());
-        reworkUser.setAvatar(user.getAvatar());
+//        reworkUser.setAvatar(user.getAvatar());
         userRepository.save(reworkUser);
         UserResponse responseUser = new UserResponse();
         responseUser.setUsername(reworkUser.getUsername());
         return responseUser;
+    }
+
+    public void nullifyUser(int userId){
+        User nullifiedUser = userRepository.findById(userId).orElseThrow();
+
+        nullifiedUser.setUsername("");
+        nullifiedUser.setPassword("");
+        nullifiedUser.setFirstName("");
+        nullifiedUser.setLastName("");
+        nullifiedUser.setDescription("");
+        userRepository.save(nullifiedUser);
     }
 }

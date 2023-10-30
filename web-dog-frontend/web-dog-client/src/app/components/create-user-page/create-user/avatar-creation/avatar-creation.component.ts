@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-avatar-creation',
@@ -7,9 +8,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class AvatarCreationComponent {
 
+  constructor(private userService: UserService) {
+  }
+
   @Output() tabSelected = new EventEmitter<number>();
 
   selectNextTab(index: number) {
     this.tabSelected.emit(index);
+    if (index == 0) {
+    }
   }
 }
