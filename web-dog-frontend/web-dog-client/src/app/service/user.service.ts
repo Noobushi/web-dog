@@ -7,8 +7,10 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  private currentUserIdSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
+  private currentUserIdSubject: BehaviorSubject<number> = new BehaviorSubject<any>(null);
   currentUserId$ = this.currentUserIdSubject.asObservable();
+
   private host: string;
 
   constructor(private http: HttpClient) {
@@ -21,10 +23,6 @@ export class UserService {
 
   public edit(userId: number, userForm: any): Observable<User> {
     return this.http.patch<User>(`${this.host}/users/update/${userId}`, userForm);
-  }
-
-  public nullify(userId: number): Observable<void> {
-    return this.http.patch<void>(`${this.host}/users/create?userId=${userId}`, {});
   }
 
   setCurrentUserId(id: number) {

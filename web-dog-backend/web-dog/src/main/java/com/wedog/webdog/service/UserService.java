@@ -41,21 +41,10 @@ public class UserService {
         reworkUser.setFirstName(user.getFirstName());
         reworkUser.setLastName(user.getLastName());
         reworkUser.setDescription(user.getDescription());
-//        reworkUser.setAvatar(user.getAvatar());
         userRepository.save(reworkUser);
         UserResponse responseUser = new UserResponse();
+        responseUser.setId(reworkUser.getId());
         responseUser.setUsername(reworkUser.getUsername());
         return responseUser;
-    }
-
-    public void nullifyUser(int userId){
-        User nullifiedUser = userRepository.findById(userId).orElseThrow();
-
-        nullifiedUser.setUsername("");
-        nullifiedUser.setPassword("");
-        nullifiedUser.setFirstName("");
-        nullifiedUser.setLastName("");
-        nullifiedUser.setDescription("");
-        userRepository.save(nullifiedUser);
     }
 }

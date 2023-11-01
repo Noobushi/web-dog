@@ -39,7 +39,7 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   onSubmit(userFormGroup: any) {
-    this.userService.edit(this.currentUserId, userFormGroup.value).subscribe();
+    this.userService.edit(this.currentUserId, userFormGroup).subscribe();
     this.selectNextTab(1);
   }
 
