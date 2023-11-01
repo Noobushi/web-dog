@@ -3,6 +3,10 @@
     height: 100%;
 }
 
+.image-format:hover {
+    border: 2px solid rgb(54, 108, 189);
+}
+
 .image-container {
     overflow: auto;
     height: 100%;
