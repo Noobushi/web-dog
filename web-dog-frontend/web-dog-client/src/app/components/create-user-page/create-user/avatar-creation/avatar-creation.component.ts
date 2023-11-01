@@ -8,14 +8,16 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class AvatarCreationComponent {
 
-  constructor(private userService: UserService) {
-  }
-
   @Output() tabSelected = new EventEmitter<number>();
+  currentUserId!: number;
+
+  constructor(private userService: UserService) {
+    this.userService.currentUserId$.subscribe((id) => {
+      this.currentUserId = id;
+    });
+  }
 
   selectNextTab(index: number) {
     this.tabSelected.emit(index);
-    if (index == 0) {
-    }
   }
 }

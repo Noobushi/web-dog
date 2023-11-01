@@ -17,6 +17,7 @@ import { AvatarCreationComponent } from './components/create-user-page/create-us
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PetDetailsComponent } from './components/create-user-page/create-user/pet-details/pet-details.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { PetDetailsComponent } from './components/create-user-page/create-user/p
     MatButtonModule,
     MatTabsModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatGridListModule
   ],
   providers: [
     UserService

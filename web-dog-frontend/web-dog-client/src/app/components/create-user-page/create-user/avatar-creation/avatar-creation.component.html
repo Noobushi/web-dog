@@ -1,2 +1,26 @@
-<button mat-raised-button color="primary" (click)="selectNextTab(0)">Previous</button>
-<button mat-raised-button color="primary" (click)="selectNextTab(2)">Next</button>
+<div class="image-container">
+    <mat-grid-list cols="3" rowHeight="300px">
+        <mat-grid-tile>
+            <img class="image-format" [src]="'assets/pictures/avatars/labradorRetriever.avif'">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <img class="image-format" [src]="'assets/pictures/avatars/berneseMountainDog.webp'">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <img class="image-format" [src]="'assets/pictures/avatars/germanShepherd.png'">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <img class="image-format" [src]="'assets/pictures/avatars/australianShepherd.webp'">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <img class="image-format" [src]="'assets/pictures/avatars/caucasianShepherd.webp'">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <img class="image-format" [src]="'assets/pictures/avatars/husky.jpg'">
+        </mat-grid-tile>
+    </mat-grid-list>
+    <div class="button-row">
+        <button class="button-format" mat-raised-button color="primary" (click)="selectNextTab(0)">Previous</button>
+        <button class="button-format" mat-raised-button color="primary" (click)="selectNextTab(2)">Next</button>
+    </div>
+</div>

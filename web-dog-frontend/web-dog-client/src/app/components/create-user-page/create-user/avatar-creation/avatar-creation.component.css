@@ -1,0 +1,18 @@
+.image-format {
+    width: 100%;
+    height: 100%;
+}
+
+.image-container {
+    overflow: auto;
+    height: 100%;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+}
+
+.button-format {
+    margin: 5px;
+}
