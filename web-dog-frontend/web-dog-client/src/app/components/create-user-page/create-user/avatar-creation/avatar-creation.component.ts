@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import ImageConstants from 'src/app/constants/image-constants';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -10,6 +11,8 @@ export class AvatarCreationComponent {
 
   @Output() tabSelected = new EventEmitter<number>();
   currentUserId!: number;
+
+  avatarImageList: Array<string> = ImageConstants.avatarImageList;
 
   constructor(private userService: UserService) {
     this.userService.currentUserId$.subscribe((id) => {
