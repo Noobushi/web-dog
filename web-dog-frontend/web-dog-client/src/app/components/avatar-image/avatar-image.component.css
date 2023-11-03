@@ -1,0 +1,12 @@
+.image-container {
+    position: absolute;
+    height: 700px;
+    width: 900px;
+}
+
+.button-format {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 680px;
+}

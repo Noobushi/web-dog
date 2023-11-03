@@ -1,7 +1,7 @@
 <div class="image-container">
     <mat-grid-list cols="3" rowHeight="300px">
         <mat-grid-tile *ngFor="let image of avatarImageList">
-            <img class="image-format" [src]="image">
+            <img class="image-format" [src]="image.url" (click)="openDialog(image.id)">
         </mat-grid-tile>
     </mat-grid-list>
     <div class="button-row">
