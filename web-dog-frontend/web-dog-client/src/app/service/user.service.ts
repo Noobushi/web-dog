@@ -28,4 +28,8 @@ export class UserService {
   setCurrentUserId(id: number) {
     this.currentUserIdSubject.next(id);
   }
+
+  public setAvatar(userId: number, avatarUrl: string): Observable<void> {
+    return this.http.patch<void>(`${this.host}/users/setAvatar/${userId}`, { "avatar": avatarUrl });
+  }
 }

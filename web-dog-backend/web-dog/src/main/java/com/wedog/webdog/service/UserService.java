@@ -47,4 +47,10 @@ public class UserService {
         responseUser.setUsername(reworkUser.getUsername());
         return responseUser;
     }
+
+    @Transactional
+    public void setUserAvatar(int userId, UserRequest user){
+        User reworkUser = userRepository.findById(userId).orElseThrow();
+        reworkUser.setAvatar(user.getAvatar());
+    }
 }

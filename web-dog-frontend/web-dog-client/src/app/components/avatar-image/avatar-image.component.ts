@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-avatar-image',
@@ -8,10 +9,15 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class AvatarImageComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { image: any }) {
+  currentUserId!: number;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { image: any }, private userService: UserService) {
+    this.userService.currentUserId$.subscribe((id) => {
+      this.currentUserId = id;
+    });
   }
 
-  save(imageId: number) {
-
+  save(imageUrl: string) {
+    this.userService.setAvatar(this.currentUserId, imageUrl).subscribe();
   }
 }

@@ -27,4 +27,10 @@ public class UserController {
     public ResponseEntity<UserResponse> editUser(@PathVariable int userId, @RequestBody UserRequest user) {
         return new ResponseEntity<>(userService.editUser(userId, user), HttpStatus.OK);
     }
+
+    @PatchMapping("/setAvatar/{userId}")
+    public ResponseEntity<Void> setAvatar(@PathVariable int userId, @RequestBody UserRequest user){
+        userService.setUserAvatar(userId, user);
+        return ResponseEntity.ok().build();
+    }
 }
