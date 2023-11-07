@@ -10,11 +10,24 @@ export class UserService {
 
   private currentUserIdSubject: BehaviorSubject<number> = new BehaviorSubject<any>(null);
   currentUserId$ = this.currentUserIdSubject.asObservable();
+  isAvatarSaved = new BehaviorSubject<boolean>(false);
 
   private host: string;
 
   constructor(private http: HttpClient) {
     this.host = "http://localhost:8080";
+  }
+
+  getIsAvatarSaved() {
+    return this.isAvatarSaved.asObservable();
+  }
+
+  setIsAvatarSaved(value: boolean) {
+    this.isAvatarSaved.next(value);
+  }
+
+  setCurrentUserId(id: number) {
+    this.currentUserIdSubject.next(id);
   }
 
   public create(): Observable<User> {
@@ -25,9 +38,6 @@ export class UserService {
     return this.http.patch<User>(`${this.host}/users/update/${userId}`, userForm);
   }
 
-  setCurrentUserId(id: number) {
-    this.currentUserIdSubject.next(id);
-  }
 
   public setAvatar(userId: number, avatarUrl: string): Observable<void> {
     return this.http.patch<void>(`${this.host}/users/setAvatar/${userId}`, { "avatar": avatarUrl });

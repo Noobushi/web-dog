@@ -6,6 +6,6 @@
     </mat-grid-list>
     <div class="button-row">
         <button class="button-format" mat-raised-button color="primary" (click)="selectNextTab(0)">Previous</button>
-        <button class="button-format" mat-raised-button color="primary" (click)="selectNextTab(2)">Next</button>
+        <button *ngIf="allowNextTab" class="button-format" mat-raised-button color="primary" (click)="selectNextTab(2)">Next</button>
     </div>
 </div>
