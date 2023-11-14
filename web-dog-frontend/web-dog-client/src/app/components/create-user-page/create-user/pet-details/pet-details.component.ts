@@ -11,8 +11,10 @@ export class PetDetailsComponent {
   @Output() tabSelected = new EventEmitter<number>();
   chipSizeList: string[] = PetChipConstants.chipSizeList;
   chipColorList: string[] = PetChipConstants.chipColorList;
+  chipWeightList: string[] = PetChipConstants.chipWeightList;
   angerStats: number[] = [1, 2, 3, 4, 5, 6];
   stealthStats: number[] = [1, 2, 3, 4, 5, 6];
+  weightStats: number[] = [1, 2, 3, 4, 5, 6];
   activeChip!: string;
 
   selectNextTab(index: number) {
@@ -29,12 +31,21 @@ export class PetDetailsComponent {
   }
 
   performColorAction(chipColor: string) {
-    if (chipColor === "light") {
+    if (chipColor === "bright") {
       this.starClassApplier(2, "stealthStarId")
     } else if (chipColor === "dark") {
       this.starClassApplier(5, "stealthStarId")
     }
     this.activeChip = chipColor;
+  }
+
+  performWeightAction(chipWeight: string) {
+    if (chipWeight === "heavy") {
+      this.starClassApplier(2, "weightStarId")
+    } else if (chipWeight === "light") {
+      this.starClassApplier(6, "weightStarId")
+    }
+    this.activeChip = chipWeight;
   }
 
   starClassApplier(value: number, elementName: string) {

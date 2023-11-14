@@ -19,11 +19,14 @@
 }
 
 .stats-atributes {
-    padding: 5px;
     font-size: 25px;
     font-weight: 500;
 }
 
 .stars-container {
     display: contents;
+}
+
+.star-cell {
+    display: flex;
 }

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col">
+    <div class="col-3">
         <mat-chip-listbox>
             <mat-chip-option [ngClass]="{'mat-chip-active': chipName === activeChip}" *ngFor="let chipName of chipSizeList" (click)="performSizeAction(chipName)">
                 {{chipName}}
@@ -10,25 +10,52 @@
                 {{chipColor}}
             </mat-chip-option>
         </mat-chip-listbox>
+        <mat-chip-listbox>
+            <mat-chip-option [ngClass]="{'mat-chip-active': chipWeight === activeChip}" *ngFor="let chipWeight of chipWeightList" (click)="performWeightAction(chipWeight)">
+                {{chipWeight}}
+            </mat-chip-option>
+        </mat-chip-listbox>
         <button mat-raised-button color="primary" (click)="selectNextTab(1)">Previous</button>
     </div>
-    <div class="col">
-        <div class="stats-heading">Stats</div>
-        <div class="row stats-atributes">Anger:
-            <div class="stars-container">
-                <div *ngFor="let star of angerStats; let i = index">
-                    <mat-icon id="{{'angerStarId'+ i}}">star</mat-icon>
-                </div>
-            </div>
-        </div>
-        <div class="row stats-atributes">Stealth:
-            <div class="stars-container">
-                <div *ngFor="let star of stealthStats; let i = index">
-                    <mat-icon id="{{'stealthStarId'+ i}}">star</mat-icon>
-                </div>
-            </div>
-        </div>
+
+    <div class="col-3">
+        <table>
+            <th class="stats-heading" colspan="2">Stats</th>
+            <tbody>
+                <tr>
+                    <td class="stats-atributes">Anger:</td>
+                    <td class="star-cell">
+                        <div class="stars-container">
+                            <div *ngFor="let star of angerStats; let i = index">
+                                <mat-icon id="{{'angerStarId'+ i}}">star</mat-icon>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="stats-atributes">Stealth:</td>
+                    <td class="star-cell">
+                        <div class="stars-container">
+                            <div *ngFor="let star of stealthStats; let i = index">
+                                <mat-icon id="{{'stealthStarId'+ i}}">star</mat-icon>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="stats-atributes">Speed:</td>
+                    <td class="star-cell">
+                        <div class="stars-container">
+                            <div *ngFor="let star of weightStats; let i = index">
+                                <mat-icon id="{{'weightStarId'+ i}}">star</mat-icon>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
     <div class="col">
         <div class="row">
             <img style="height: 100px;" src="assets/pictures/pet-images/braveDog.png">
