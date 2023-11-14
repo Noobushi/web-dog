@@ -1,0 +1,30 @@
+.selected {
+    color: yellow;
+}
+
+.mat-chip-active {
+    background-color: rgb(63, 81, 181) !important;
+}
+
+.mat-mdc-standard-chip {
+    --mdc-chip-elevated-container-color: rgb(181, 63, 63);
+    --mdc-chip-label-text-color: white;
+}
+
+.stats-heading {
+    padding: 15px;
+    text-align: center;
+    font-size: 40px;
+    color: #dbdb14;
+}
+
+.stats-atributes {
+    display: contents;
+    padding: 5px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.stars-container {
+    display: contents;
+}

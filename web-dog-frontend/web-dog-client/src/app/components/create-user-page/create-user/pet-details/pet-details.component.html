@@ -1,1 +1,39 @@
-<button mat-raised-button color="primary" (click)="selectNextTab(1)">Previous</button>
+<div class="row">
+    <div class="col">
+        <mat-chip-listbox>
+            <mat-chip-option [ngClass]="{'mat-chip-active': chipName === activeChip}" *ngFor="let chipName of chipSizeList" (click)="performSizeAction(chipName)">
+                {{chipName}}
+            </mat-chip-option>
+        </mat-chip-listbox>
+        <mat-chip-listbox>
+            <mat-chip-option [ngClass]="{'mat-chip-active': chipColor === activeChip}" *ngFor="let chipColor of chipColorList" (click)="performColorAction(chipColor)">
+                {{chipColor}}
+            </mat-chip-option>
+        </mat-chip-listbox>
+        <button mat-raised-button color="primary" (click)="selectNextTab(1)">Previous</button>
+    </div>
+    <div class="col">
+        <div class="stats-heading">Stats</div>
+        <div class="col" style="display: flex;">
+            <div class="stats-atributes">Anger:</div>
+            <div class="stars-container">
+                <div *ngFor="let star of angerStats; let i = index">
+                    <mat-icon id="{{'starId'+ i}}">star</mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row">
+            <img style="height: 100px;" src="assets/pictures/pet-images/braveDog.png">
+        </div>
+        <div class="row">
+            <div class="col">
+                arm
+            </div>
+            <div class="col">
+                wep
+            </div>
+        </div>
+    </div>
+</div>

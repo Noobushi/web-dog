@@ -20,7 +20,7 @@ import { PetDetailsComponent } from './components/create-user-page/create-user/p
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AvatarImageComponent } from './components/avatar-image/avatar-image.component';
-
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { AvatarImageComponent } from './components/avatar-image/avatar-image.com
     MatStepperModule,
     MatSnackBarModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatChipsModule
   ],
   providers: [
     UserService
