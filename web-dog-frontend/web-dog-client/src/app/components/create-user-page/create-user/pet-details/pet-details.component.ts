@@ -12,6 +12,7 @@ export class PetDetailsComponent {
   chipSizeList: string[] = PetChipConstants.chipSizeList;
   chipColorList: string[] = PetChipConstants.chipColorList;
   angerStats: number[] = [1, 2, 3, 4, 5, 6];
+  stealthStats: number[] = [1, 2, 3, 4, 5, 6];
   activeChip!: string;
 
   selectNextTab(index: number) {
@@ -20,28 +21,30 @@ export class PetDetailsComponent {
 
   performSizeAction(chipName: string) {
     if (chipName === "big") {
-      this.starClassApplier(3);
+      this.starClassApplier(3, "angerStarId");
     } else if (chipName === "small") {
-      this.starClassApplier(6);
+      this.starClassApplier(6, "angerStarId");
     }
     this.activeChip = chipName;
   }
 
   performColorAction(chipColor: string) {
-    if (chipColor === "white") {
-    } else if (chipColor === "black") {
+    if (chipColor === "light") {
+      this.starClassApplier(2, "stealthStarId")
+    } else if (chipColor === "dark") {
+      this.starClassApplier(5, "stealthStarId")
     }
     this.activeChip = chipColor;
   }
 
-  starClassApplier(value: number) {
+  starClassApplier(value: number, elementName: string) {
     let starId = "";
     for (let i = 6 - 1; i >= 0; i--) {
-      starId = "starId" + i;
+      starId = elementName + i;
       document.getElementById(starId)?.classList.remove("selected");
     }
     for (let i = 0; i < value; i++) {
-      starId = "starId" + i;
+      starId = elementName + i;
       document.getElementById(starId)?.classList.add("selected");
     }
   }

@@ -14,11 +14,17 @@
     </div>
     <div class="col">
         <div class="stats-heading">Stats</div>
-        <div class="col" style="display: flex;">
-            <div class="stats-atributes">Anger:</div>
+        <div class="row stats-atributes">Anger:
             <div class="stars-container">
                 <div *ngFor="let star of angerStats; let i = index">
-                    <mat-icon id="{{'starId'+ i}}">star</mat-icon>
+                    <mat-icon id="{{'angerStarId'+ i}}">star</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="row stats-atributes">Stealth:
+            <div class="stars-container">
+                <div *ngFor="let star of stealthStats; let i = index">
+                    <mat-icon id="{{'stealthStarId'+ i}}">star</mat-icon>
                 </div>
             </div>
         </div>
