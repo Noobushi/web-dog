@@ -30,3 +30,24 @@
 .star-cell {
     display: flex;
 }
+
+.table-style {
+    background: rgba(145, 133, 116, 0.3);
+    border-radius: 4%;
+}
+
+.pet-container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.button-box {
+    margin-top: 120%;
+}
+
+.characteristics-heading {
+    color: yellow;
+    font-size: 30px;
+    padding-bottom: 10px;
+}

@@ -15,7 +15,13 @@ export class PetDetailsComponent {
   angerStats: number[] = [1, 2, 3, 4, 5, 6];
   stealthStats: number[] = [1, 2, 3, 4, 5, 6];
   weightStats: number[] = [1, 2, 3, 4, 5, 6];
-  activeChip!: string;
+  initiativeStats: number[] = [1, 2, 3, 4, 5, 6];
+  charismaStats: number[] = [1, 2, 3, 4, 5, 6];
+  defenceStats: number[] = [1, 2, 3, 4, 5, 6];
+  activeSizeChip!: string;
+  activeColorChip!: string;
+  activeWeightChip!: string;
+  petImage: string = "assets/pictures/pet-images/questionMark.jpg";
 
   selectNextTab(index: number) {
     this.tabSelected.emit(index);
@@ -24,28 +30,36 @@ export class PetDetailsComponent {
   performSizeAction(chipName: string) {
     if (chipName === "big") {
       this.starClassApplier(3, "angerStarId");
+      this.starClassApplier(6, "initiativeStarId");
+      this.petImage = "assets/pictures/pet-images/bigDogBody.jpg";
     } else if (chipName === "small") {
+      this.petImage = "assets/pictures/pet-images/smallDogBody.webp";
       this.starClassApplier(6, "angerStarId");
+      this.starClassApplier(2, "initiativeStarId");
     }
-    this.activeChip = chipName;
+    this.activeSizeChip = chipName;
   }
 
   performColorAction(chipColor: string) {
     if (chipColor === "bright") {
       this.starClassApplier(2, "stealthStarId")
+      this.starClassApplier(5, "charismaStarId")
     } else if (chipColor === "dark") {
       this.starClassApplier(5, "stealthStarId")
+      this.starClassApplier(2, "charismaStarId")
     }
-    this.activeChip = chipColor;
+    this.activeColorChip = chipColor;
   }
 
   performWeightAction(chipWeight: string) {
     if (chipWeight === "heavy") {
       this.starClassApplier(2, "weightStarId")
+      this.starClassApplier(6, "defenceStarId")
     } else if (chipWeight === "light") {
       this.starClassApplier(6, "weightStarId")
+      this.starClassApplier(2, "defenceStarId")
     }
-    this.activeChip = chipWeight;
+    this.activeWeightChip = chipWeight;
   }
 
   starClassApplier(value: number, elementName: string) {
