@@ -21,7 +21,13 @@ export class PetDetailsComponent {
   activeSizeChip!: string;
   activeColorChip!: string;
   activeWeightChip!: string;
-  petImage: string = "assets/pictures/pet-images/questionMark.jpg";
+  petImage: string = "assets/pictures/pet-images/questionMark.png";
+  isBig!: boolean;
+  isBright!: boolean;
+  isHeavy!: boolean;
+  isSizeChosen: boolean = false;
+  isColorChosen: boolean = false;
+  isWeightChosen: boolean = false;
 
   selectNextTab(index: number) {
     this.tabSelected.emit(index);
@@ -31,12 +37,15 @@ export class PetDetailsComponent {
     if (chipName === "big") {
       this.starClassApplier(3, "angerStarId");
       this.starClassApplier(6, "initiativeStarId");
-      this.petImage = "assets/pictures/pet-images/bigDogBody.jpg";
+      this.petImage = "assets/pictures/pet-images/bigDogBody.png";
+      this.isBig = true;
     } else if (chipName === "small") {
-      this.petImage = "assets/pictures/pet-images/smallDogBody.webp";
       this.starClassApplier(6, "angerStarId");
       this.starClassApplier(2, "initiativeStarId");
+      this.petImage = "assets/pictures/pet-images/smallDogBody.png";
+      this.isBig = false;
     }
+    this.isSizeChosen = true;
     this.activeSizeChip = chipName;
   }
 
@@ -44,10 +53,13 @@ export class PetDetailsComponent {
     if (chipColor === "bright") {
       this.starClassApplier(2, "stealthStarId")
       this.starClassApplier(5, "charismaStarId")
+      this.isBright = true;
     } else if (chipColor === "dark") {
       this.starClassApplier(5, "stealthStarId")
       this.starClassApplier(2, "charismaStarId")
+      this.isBright = false;
     }
+    this.isColorChosen = true;
     this.activeColorChip = chipColor;
   }
 
@@ -55,10 +67,18 @@ export class PetDetailsComponent {
     if (chipWeight === "heavy") {
       this.starClassApplier(2, "weightStarId")
       this.starClassApplier(6, "defenceStarId")
+      if (this.isBig) {
+        this.petImage = "assets/pictures/pet-images/bigDogBodyWithVest.png";
+      } else {
+        this.petImage = "assets/pictures/pet-images/smallDogBodyWithVest.png";
+      }
+      this.isHeavy = true;
     } else if (chipWeight === "light") {
       this.starClassApplier(6, "weightStarId")
       this.starClassApplier(2, "defenceStarId")
+      this.isHeavy = false;
     }
+    this.isWeightChosen = true;
     this.activeWeightChip = chipWeight;
   }
 
@@ -72,5 +92,10 @@ export class PetDetailsComponent {
       starId = elementName + i;
       document.getElementById(starId)?.classList.add("selected");
     }
+  }
+  reset() {
+    this.isSizeChosen = false;
+    this.isColorChosen = false;
+    this.isWeightChosen = false;
   }
 }

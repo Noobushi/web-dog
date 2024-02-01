@@ -1,21 +1,40 @@
 <div class="row pet-container">
     <div class="col-3">
         <div class="characteristics-heading">Characteristics</div>
-        <mat-chip-listbox>
-            <mat-chip-option [ngClass]="{'mat-chip-active': chipName === activeSizeChip}" *ngFor="let chipName of chipSizeList" (click)="performSizeAction(chipName)">
-                {{chipName}}
-            </mat-chip-option>
-        </mat-chip-listbox>
-        <mat-chip-listbox>
-            <mat-chip-option [ngClass]="{'mat-chip-active': chipColor === activeColorChip}" *ngFor="let chipColor of chipColorList" (click)="performColorAction(chipColor)">
-                {{chipColor}}
-            </mat-chip-option>
-        </mat-chip-listbox>
-        <mat-chip-listbox>
-            <mat-chip-option [ngClass]="{'mat-chip-active': chipWeight === activeWeightChip}" *ngFor="let chipWeight of chipWeightList" (click)="performWeightAction(chipWeight)">
-                {{chipWeight}}
-            </mat-chip-option>
-        </mat-chip-listbox>
+        <mat-vertical-stepper #stepper [linear]="true" style="background: none;">
+            <mat-step label="Pet Size" [completed]="isSizeChosen" [editable]="false">
+                <mat-chip-listbox>
+                    <mat-chip-option *ngFor="let chipName of chipSizeList" (click)="performSizeAction(chipName)">
+                        {{chipName}}
+                    </mat-chip-option>
+                </mat-chip-listbox>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+            <mat-step label="Pet Color" [completed]="isColorChosen" [editable]="false">
+                <mat-chip-listbox>
+                    <mat-chip-option *ngFor="let chipColor of chipColorList" (click)="performColorAction(chipColor)">
+                        {{chipColor}}
+                    </mat-chip-option>
+                </mat-chip-listbox>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+            <mat-step label="Pet Weight" [completed]="isWeightChosen" [editable]="false">
+                <mat-chip-listbox>
+                    <mat-chip-option *ngFor="let chipWeight of chipWeightList" (click)="performWeightAction(chipWeight)">
+                        {{chipWeight}}
+                    </mat-chip-option>
+                </mat-chip-listbox>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset(); reset()">Reset</button>
+                </div>
+            </mat-step>
+        </mat-vertical-stepper>
         <div class="button-box">
             <button mat-raised-button color="primary" (click)="selectNextTab(1)">Previous</button>
         </div>
