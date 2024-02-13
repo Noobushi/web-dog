@@ -4,20 +4,27 @@ import com.wedog.webdog.dto.User.UserRequest;
 import com.wedog.webdog.dto.User.UserResponse;
 import com.wedog.webdog.entity.User;
 import com.wedog.webdog.repository.UserRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private static final Logger log = LogManager.getLogger(User.class);
 
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Transactional
-    public UserResponse createUser (){
+    public UserResponse createUser() {
         User newUser = new User();
         newUser.setUsername("");
         newUser.setPassword("");
@@ -33,7 +40,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponse editUser (int userId, UserRequest user){
+    public UserResponse editUser(int userId, UserRequest user) {
         User reworkUser = userRepository.findById(userId).orElseThrow();
 
         reworkUser.setUsername(user.getUsername());
@@ -49,8 +56,23 @@ public class UserService {
     }
 
     @Transactional
-    public void setUserAvatar(int userId, UserRequest user){
+    public void setUserAvatar(int userId, UserRequest user) {
         User reworkUser = userRepository.findById(userId).orElseThrow();
         reworkUser.setAvatar(user.getAvatar());
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Transactional
+    public void deleteUser(int userId) throws Exception {
+        Optional<User> userToDelete = userRepository.findById(userId);
+        if (userToDelete.isPresent()) {
+            userRepository.deleteById(userId);
+        } else {
+            log.error("User with ID " + userId + " not found");
+            throw new NoSuchElementException();
+        }
     }
 }

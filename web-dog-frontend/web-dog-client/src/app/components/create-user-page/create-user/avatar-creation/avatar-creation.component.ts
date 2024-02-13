@@ -17,7 +17,7 @@ export class AvatarCreationComponent implements OnInit {
 
   avatarImageList: Array<{ id: number, url: string }> = ImageConstants.avatarImageList;
 
-  constructor(private userService: UserService, public dialog: MatDialog) {
+  constructor(private userService: UserService, private dialog: MatDialog) {
     this.userService.currentUserId$.subscribe((id) => {
       this.currentUserId = id;
     });

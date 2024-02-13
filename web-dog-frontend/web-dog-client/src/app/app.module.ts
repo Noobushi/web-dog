@@ -21,6 +21,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AvatarImageComponent } from './components/avatar-image/avatar-image.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatTableModule } from '@angular/material/table';
+import { AdminComponent } from './components/admin/admin.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { MatChipsModule } from '@angular/material/chips';
     ProfileDetailsComponent,
     AvatarCreationComponent,
     PetDetailsComponent,
-    AvatarImageComponent
+    AvatarImageComponent,
+    AdminComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSnackBarModule,
     MatGridListModule,
     MatDialogModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTableModule
   ],
   providers: [
     UserService

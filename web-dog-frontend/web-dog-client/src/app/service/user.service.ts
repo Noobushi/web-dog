@@ -42,4 +42,12 @@ export class UserService {
   public setAvatar(userId: number, avatarUrl: string): Observable<void> {
     return this.http.patch<void>(`${this.host}/users/setAvatar/${userId}`, { "avatar": avatarUrl });
   }
+
+  public getAllUsers(): Observable<void> {
+    return this.http.get<void>(`${this.host}/users/getAll`, {});
+  }
+
+  public deleteUser(user: User): Observable<void> {
+    return this.http.delete<void>(`${this.host}/users/delete`, { body: user });
+  }
 }
