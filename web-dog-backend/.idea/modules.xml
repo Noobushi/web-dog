@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/web-dog/web-dog.iml" filepath="$PROJECT_DIR$/web-dog/web-dog.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/web-dog-backend.iml" filepath="$PROJECT_DIR$/.idea/web-dog-backend.iml" />
     </modules>
   </component>

@@ -24,6 +24,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
 import { AdminComponent } from './components/admin/admin.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     PetDetailsComponent,
     AvatarImageComponent,
     AdminComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

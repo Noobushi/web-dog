@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { empty } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import ImageConstants from 'src/app/constants/image-constants';
+import { EditUserComponent } from 'src/app/edit-user/edit-user.component';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/service/user.service';
 
@@ -14,6 +17,7 @@ export class AdminComponent implements OnInit {
 
   dataSource: any;
   displayedColumns!: string[];
+  image!: string;
 
   constructor(private userService: UserService, private dialog: MatDialog) {
   }
@@ -39,6 +43,23 @@ export class AdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.loadUserData();
     });
+  }
+
+  editUser(dataSource: User) {
+    let dialogRef = this.dialog.open(EditUserComponent, {
+      height: '650px',
+      width: '300px',
+      data: { user: dataSource }
+    });
+  }
+
+  checkAvatarImage(image: string): string {
+    if (image == "" || image == null) {
+      this.image = ImageConstants.DEFAULT_AVATAR_IMAGE;
+    } else {
+      this.image = image;
+    }
+    return this.image;
   }
 
 }

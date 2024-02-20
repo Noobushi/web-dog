@@ -15,13 +15,14 @@ public class DBInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
         //Creates users in the database
         User firstUser = new User();
         firstUser.setUsername("Bat Georgi");
         firstUser.setFirstName("Georgi");
         firstUser.setLastName("Georgiev");
         firstUser.setPassword("313233");
-        firstUser.setAvatar("Insert Picture");
+        firstUser.setAvatar("");
         firstUser.setDescription("Very spicy boy");
         entityManager.persist(firstUser);
 
@@ -30,9 +31,8 @@ public class DBInitializer implements CommandLineRunner {
         secondUser.setFirstName("Ivan");
         secondUser.setLastName("Ivanov");
         secondUser.setPassword("313233");
-        secondUser.setAvatar("Insert Picture");
+        secondUser.setAvatar("");
         secondUser.setDescription("Very lazy boy");
         entityManager.persist(secondUser);
-
     }
 }
