@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { empty } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import ImageConstants from 'src/app/constants/image-constants';
 import { EditUserComponent } from 'src/app/edit-user/edit-user.component';
 import { User } from 'src/app/models/user';
-import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-admin',
@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
   displayedColumns!: string[];
   image!: string;
 
-  constructor(private userService: UserService, private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -28,9 +28,7 @@ export class AdminComponent implements OnInit {
   }
 
   loadUserData() {
-    this.userService.getAllUsers().subscribe((users) => {
-      this.dataSource = users;
-    });
+    this.dataSource = this.route.snapshot.data;
   }
 
   deleteUser(dataSource: User) {
