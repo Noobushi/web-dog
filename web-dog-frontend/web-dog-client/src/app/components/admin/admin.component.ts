@@ -51,6 +51,10 @@ export class AdminComponent implements OnInit {
       width: '300px',
       data: { user: dataSource }
     });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadUserData();
+    });
   }
 
   checkAvatarImage(image: string): string {

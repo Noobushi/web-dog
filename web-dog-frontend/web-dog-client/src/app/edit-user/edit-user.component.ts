@@ -2,6 +2,7 @@ import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-user',
@@ -21,7 +22,9 @@ export class EditUserComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<EditUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { user: any },
-    private userService: UserService, private formBuilder: FormBuilder) {
+    private userService: UserService, private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar) {
+    this.currentUserId = this.data.user.id;
   }
 
   ngOnInit(): void {
@@ -40,6 +43,12 @@ export class EditUserComponent implements OnInit {
 
   updateInfo(userFormGroup: any) {
     this.userService.edit(this.currentUserId, userFormGroup.value).subscribe();
+    this.dialogRef.close();
+    this.snackBar.open(`User ${this.userFormGroup.value['username']} successfully updated...`, "X", { duration: 3000, horizontalPosition: 'right' });
+  }
+
+  cancelEvent() {
+    this.dialogRef.close();
   }
 
 }

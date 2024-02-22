@@ -49,7 +49,10 @@
                     </mat-form-field>
                 </div>
             </div>
-            <button [disabled]="userFormGroup.invalid" mat-raised-button color="primary" (click)="updateInfo(userFormGroup)" type="submit">Save</button>
+            <div class="buttons">
+                <button [disabled]="userFormGroup.invalid" mat-raised-button color="primary" (click)="updateInfo(userFormGroup)" type="submit">Save</button>
+                <button mat-raised-button color="primary" (click)="cancelEvent()">Cancel</button>
+            </div>
         </form>
         <div>
             <div class="validation-message" *ngIf="userFormGroup.invalid">Please fill all fields</div>
