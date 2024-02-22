@@ -28,7 +28,9 @@ export class AdminComponent implements OnInit {
   }
 
   loadUserData() {
-    this.dataSource = this.route.snapshot.data;
+    this.route.data.subscribe((users) => {
+      this.dataSource = users;
+    });
   }
 
   deleteUser(dataSource: User) {
